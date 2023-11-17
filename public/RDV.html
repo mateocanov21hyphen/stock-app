@@ -5,17 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruta de Vuelo</title>
-    <link rel="stylesheet" href="StyleRDV.css">
+    <link rel="stylesheet" href="RDV.css">
     <script src="index.js" defer></script>
+
 </head>
 
 <body>
 
     <header>
-        <h1 id="tituloRV">Rutas de Vuelo</h1>
+        <h1 id="titulo">Rutas de Vuelo</h1>
     </header>
 
+    <section>
+        <a href="RDV.html">Rutas de Vuelo</a>
+        <a href="AEROLINEA.html">Aerolineas</a>
+        <a href="VUELOS.html">Vuelos</a>
+        <a href="CONTROLVUELOS.html">Control de Vuelos</a>
+        <a href="AEROPUERTOS.html">Aeropuertos</a>
+    </section>
 
+    <!-- Tabla con las Rutas de Vuelo que hay en la BD  -->
+    <div id="tablaDatos">
+
+        <h2></h2>
+        <h2>Datos de Rutas de Vuelo</h2>
+
+        <table id="datosTabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Aeropuerto Origen</th>
+                    <th>Aeropuerto Destino</th>
+                    <th>Continente Origen</th>
+                    <th>Continente Destino</th>
+                    <th>Pais Origen</th>
+                    <th>Pais Destino</th>
+                    <th>Ciudad Origen</th>
+                    <th>Ciudad Destino</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Aquí se insertarán los datos que hayan en la bd de mongo DB -->
+            </tbody>
+
+        </table>
+    </div>
+    
     <div id="crear">
         <h2>Crear una ruta nueva de vuelo:</h2>
         <input type="text" id="RouteId" placeholder="Id de la ruta de vuelo">
@@ -29,7 +66,50 @@
         <input type="text" id="CiuDestino" placeholder="Ciudad Destino">
 
         <button>Crear ruta de vuelo</button>
+
     </div>
+
+    <div id="buscar">
+
+        <h2></h2>
+        <h2>Buscar una Ruta de Vuelo:</h2>
+
+        <input type="text" id="RouteIdBuscar" placeholder="Id de la ruta de vuelo">
+
+        <button>Buscar Ruta de Vuelo</button>
+
+    </div>
+
+    <div id="Editar">
+        <h2></h2>
+        <h2>Editar una ruta de vuelo</h2>
+
+        <input type="text" id="RouteIdModificar" placeholder="Id de la ruta de vuelo">
+        <input type="text" id="AeroOrigenModificar" placeholder="Aeropuerto Origen">
+        <input type="text" id="AeroDestinoModificar" placeholder="Aeropuerto Destino">
+        <input type="text" id="ContOrigenModificar" placeholder="Continente Origen">
+        <input type="text" id="ContDestinoModificar" placeholder="Continente Destino">
+        <input type="text" id="PaisOrigenModificar" placeholder="País Origen">
+        <input type="text" id="PaisDestinoModificar" placeholder="País Destino">
+        <input type="text" id="CiuOrigenModificar" placeholder="Ciudad Origen">
+        <input type="text" id="CiuDestinoModificar" placeholder="Ciudad Destino">
+
+        <button onclick="modificarRutaVuelo()">Modificar Ruta de vuelo</button>
+    </div>
+
+
+    <div id="Eliminar">
+
+        <h2></h2>
+        <h2>Eliminar una ruta de vuelo</h2>
+
+        <input type="text" id="RouteIdEliminar" placeholder="ID de la ruta de vuelo">
+
+        <button onclick="eliminarRutaVuelo()">Borrar Ruta de Vuelo</button>
+
+    </div>
+
+    
 
 </body>
 </html>

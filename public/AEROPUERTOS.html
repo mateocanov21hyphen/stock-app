@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeropuertos</title>
+    <link rel="stylesheet" href="AEROPUERTOS.css">
+    <script src="index.js"></script>
+
+</head>
+
+<body>
+    
+    <header>
+        <h1 id="titulo">Aeropuertos</h1>
+    </header>
+
+    <section>
+        <a href="RDV.html">Rutas de Vuelo</a>
+        <a href="AEROLINEA.html">Aerolineas</a>
+        <a href="VUELOS.html">Vuelos</a>
+        <a href="CONTROLVUELOS.html">Control de Vuelos</a>
+        <a href="AEROPUERTOS.html">Aeropuertos</a>
+    </section>
+
+    <!-- Tabla con las Aerolineas -->
+    <div id="tablaDatos">
+
+        <h2></h2>
+        <h2>Datos de Aeropuertos</h2>
+
+        <table id="datosTablaAeropuertos">
+           <thead>
+            <tr>
+
+                <th>ID Aeropuerto</th>
+                <th>Nombre Aeropuerto</th>
+                <th>Ubicación Aeropuerto (Ciudad)</th>
+
+            </tr>
+           </thead>
+
+           <tbody>
+            <!-- Datos sobre la tabla -->
+           </tbody>
+
+        </table>
+
+    </div>
+
+    <div id="crearAeropuerto">
+        <h2>Crear un nuevo aeropuerto</h2>
+        <input type="text" id="IDAeropuerto" placeholder="ID Aeropuerto">
+        <input type="text" id="nombreAeropuerto" placeholder="Nombre Aeropuerto">
+        <input type="text" id="ubicacionAeropuerto" placeholder="Ubicación Aeropuerto">
+        <button id="crearAeropuertoBtn">Crear Aeropuerto</button>
+    </div>
+    
+
+    <div id="buscar">
+
+        <h2></h2>
+        <h2>Buscar Aeropuerto:</h2>
+
+        <input type="text" id="IdAeropuertoBuscar" placeholder="Id Aerolinea">
+
+        <button id="crearAeropuertoBtn">Buscar Aeropuerto</button>
+    </div>
+
+    <div id="Editar">
+        
+        <h2></h2>
+        <h2>Editar un Aeropuerto:</h2>
+
+        <input type="text" id="IDAeropuertoModificar" placeholder="ID Aeropuerto">
+
+        <input type="text" id="nombreAeropuertoModificar" placeholder="Nombre Aeropuerto">
+
+        <input type="text" id="ubicacionAeropuertoModificar" placeholder="Ubicación Aeropuerto">
+
+        <button onclick="modificarAeropuerto()">Modificar Aeropuerto</button>
+
+    </div>
+
+    <div id="Eliminar">
+x
+        <h2></h2>
+        <h2>Eliminar un Aeropuerto</h2>
+
+        <input type="text" id="IDAeropuertoEliminar" placeholder="ID aeropuerto">
+
+        <button onclick="eliminarAeropuerto()">Borrar Aeropuerto</button>
+
+    </div>
+
+</body>
+</html>
