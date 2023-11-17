@@ -10,7 +10,7 @@ mongoose.connect(`mongodb+srv://mateocanovanegas2005:${process.env.MONGO_DB_PASS
         app.listen(PORT, () => {
             console.log(`Servidor escuchando en el puerto ${PORT}`)
         })
-        console.log('Conexión con la DB exitosa')
+        console.log('Conexión con la DB exitosaa')
     })
 
     .catch((err) => console.log(err))
