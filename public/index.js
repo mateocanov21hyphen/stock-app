@@ -1,3 +1,4 @@
+
 //Funcinalidad Para que el botón cree una nueva Rut de vuelo
 const inputRouteId = document.querySelector('#RouteId')
 
@@ -534,7 +535,190 @@ async function obtenerDatosVuelos() {
 // Llamar a la función para obtener y mostrar los datos al cargar la página
 window.addEventListener('load', obtenerDatosVuelos);
 
-
-//--------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 //Para Aeropuertos
-//Para crear un nuevo aeropuerto
+//Tabla:
+document.addEventListener('DOMContentLoaded', () => {
+    // Selecciona el tbody de la tabla
+    const tbody = document.querySelector('table#Tabla tbody');
+
+    // Realiza una solicitud GET al servidor para obtener los datos de aeropuertos
+    fetch('/api/v1/aeropuertos')
+        .then(response => response.json())
+        .then(data => {
+            // Genera el HTML para las filas de la tabla usando map
+            const rowsHTML = data.map(aeropuerto => `
+                <tr>
+                    <td>${aeropuerto.AeroID}</td>
+                    <td>${aeropuerto.nombreAero}</td>
+                </tr>
+            `).join('');
+
+            // Inserta las filas en el tbody de la tabla
+            tbody.innerHTML = rowsHTML;
+        })
+        .catch(error => {
+            console.error('Error al obtener datos de aeropuertos:', error);
+        });
+});
+
+//Para crear
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('button'); // Selecciona el botón
+    button.addEventListener('click', (e) => {
+        const AeroID = document.querySelector('#AeroID').value;
+        const nombreAero = document.querySelector('#nombreAero').value;
+        fetch('/api/v1/aeropuertos', {  // Corrige la ruta del fetch
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Corrige el nombre del header
+            },
+            body: JSON.stringify({
+                AeroID,
+                nombreAero,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Puedes manejar la respuesta aquí
+        })
+        .catch(error => {
+            console.error('Error al crear aeropuerto:', error);
+        });
+        document.querySelector('#AeroID').value ='';
+        document.querySelector('#nombreAero').value = '';
+    });
+});
+
+//Para buscar:
+document.addEventListener('DOMContentLoaded', () => {
+    const AeroIDInput = document.querySelector('#AeroID');
+    const buscarButton = document.querySelector('#buscarButton');
+    const detallesAeropuertoDiv = document.querySelector('#detallesAeropuerto');
+
+    const mostrarDetallesAeropuerto = (aeropuerto) => {
+        detallesAeropuertoDiv.innerHTML = `
+            <h3>Detalles del Aeropuerto:</h3>
+            <strong>ID de Aeropuerto:</strong> ${aeropuerto.AeroID}<br>
+            <strong>Nombre del Aeropuerto:</strong> ${aeropuerto.nombreAero}<br>
+        `;
+    };
+
+    buscarButton.addEventListener('click', async () => {
+        const AeroID = AeroIDInput.value.trim();
+
+        try {
+            const response = await fetch(`/api/v1/aeropuertos/${AeroID}`, {
+                method: 'GET',
+            });
+
+            if (response.ok) {
+                const aeropuerto = await response.json();
+                mostrarDetallesAeropuerto(aeropuerto);
+            } else {
+                detallesAeropuertoDiv.textContent = 'El aeropuerto no fue encontrado';
+            }
+        } catch (error) {
+            console.error('Error al buscar el aeropuerto:', error);
+        }
+
+        AeroIDInput.value = ''; // Limpiar campo de búsqueda después de buscar
+    });
+});
+
+//Para modificar:
+document.addEventListener('DOMContentLoaded', () => {
+    const AeroIDInput = document.querySelector('#AeroID');
+    const nombreAeroInput = document.querySelector('#nombreAero');
+    const editarButton = document.querySelector('#editarButton');
+
+    editarButton.addEventListener('click', async () => {
+        const AeroID = AeroIDInput.value.trim();
+        const nombreAero = nombreAeroInput.value.trim();
+
+        try {
+            const response = await fetch(`/api/v1/aeropuertos/${AeroID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombreAero }),
+            });
+
+            if (response.ok) {
+                const aeropuertoActualizado = await response.json();
+                console.log('Aeropuerto actualizado:', aeropuertoActualizado);
+            } else {
+                console.error('Error al actualizar el aeropuerto');
+            }
+        } catch (error) {
+            console.error('Error al intentar editar el aeropuerto:', error);
+        }
+
+        AeroIDInput.value = ''; // Limpiar campos después de editar
+        nombreAeroInput.value = '';
+    });
+});
+
+
+//Para Eliminar:
+document.addEventListener('DOMContentLoaded', () => {
+    const eliminarAeroIDInput = document.querySelector('#eliminarAeroID');
+    const eliminarButton = document.querySelector('#eliminarButton');
+
+    eliminarButton.addEventListener('click', async () => {
+        const AeroID = eliminarAeroIDInput.value.trim();
+
+        try {
+            const response = await fetch(`/api/v1/aeropuertos/${AeroID}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                console.log('Aeropuerto eliminado correctamente');
+            } else {
+                console.error('Error al eliminar el aeropuerto');
+            }
+        } catch (error) {
+            console.error('Error al intentar eliminar el aeropuerto:', error);
+        }
+
+        eliminarAeroIDInput.value = ''; // Limpiar campo después de eliminar
+    });
+});
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+  //Tabla:
+  document.addEventListener('DOMContentLoaded', async () => {
+    const tablaControl = document.querySelector('#Tablacontrol tbody');
+  
+    // Función para cargar los datos en la tabla
+    const cargarDatosTabla = async () => {
+      try {
+        const response = await fetch('/api/v1/controldevuelos');
+        const data = await response.json();
+  
+        tablaControl.innerHTML = ''; // Limpiar tabla antes de agregar datos
+  
+        data.forEach((item) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.IDVuelo}</td>
+            <td>${item.ListaDespegue}</td>
+            <td>${item.ListaAterrizaje}</td>
+            <td>${item.FechaDespegue}</td>
+            <td>${item.FechaAterrizaje}</td>
+            <td>${item.Estado}</td>
+          `;
+          tablaControl.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+      }
+    };
+  
+    // Cargar datos al cargar la página
+    cargarDatosTabla();
+  });

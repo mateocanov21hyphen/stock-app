@@ -1,0 +1,93 @@
+#titulo {
+    background-color: gray;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+#crear {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+
+}
+
+#buscar {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+
+}
+
+#Editar {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+
+}
+
+#Eliminar {
+
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+
+}
+
+input {
+    margin-bottom: 0.5rem;
+
+}
+
+/*TABLA*/
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+section {
+    margin: 20px 0;
+}
+
+section a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: gray;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos generales de la tabla */
+#tablacontrol {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#tablacontrol Tablacontrol {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tablacontrol th,
+#Tablacontrol td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Estilos para las columnas */
+/* Puedes ajustar el ancho de las columnas según sea necesario */
+#tablacontrol th {
+    width: calc(100% / 9);
+}
+
+/* Estilo alternativo para filas pares */
+#Tabla tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

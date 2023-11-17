@@ -310,3 +310,124 @@ app.get('/api/v1/vuelos', async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+
+//------------------------------------------------------------------------------------------------------------------
+//Para Aeropuertos
+// Ruta para obtener todos los datos de aeropuertos
+//Tabla
+app.get('/api/v1/aeropuertos', async (req, res) => {
+    try {
+        const aeropuertos = await Aeropuerto.find({}).exec();
+        res.status(200).json(aeropuertos);
+    } catch (error) {
+        console.error('Error al obtener datos de aeropuertos:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+
+//Para crear aeropuertos
+const AeropuertoSchema = mongoose.Schema({
+    AeroID:{ type: String, required: true},
+    nombreAero: String,
+}, { timestamps: true});
+
+const Aeropuerto = mongoose.model('Aeropuerto', AeropuertoSchema, 'Aeropuertos');
+
+//Crear:
+app.post('/api/v1/aeropuertos', (req, res) => {
+    const newAeropuerto = new Aeropuerto(req.body);
+
+    newAeropuerto.save()
+    .then((result) => {
+        res.status(201).json({ok:true});
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json({error: 'Error interno del servidor'});
+    });
+});
+
+//PAra buscar:
+app.get('/api/v1/aeropuertos/:AeroID', async (req, res) => {
+    const { AeroID } = req.params;
+
+    try {
+        const aeropuerto = await Aeropuerto.findOne({ AeroID }).exec();
+
+        if (aeropuerto) {
+            res.status(200).json(aeropuerto);
+        } else {
+            res.status(404).json({ message: 'Aeropuerto no encontrado' });
+        }
+    } catch (error) {
+        console.error('Error al buscar aeropuerto:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+//Para modificar:
+app.put('/api/v1/aeropuertos/:AeroID', async (req, res) => {
+    const { AeroID } = req.params;
+    const { nombreAero } = req.body;
+
+    try {
+        const aeropuertoActualizado = await Aeropuerto.findOneAndUpdate(
+            { AeroID },
+            { nombreAero },
+            { new: true }
+        ).exec();
+
+        if (aeropuertoActualizado) {
+            res.status(200).json(aeropuertoActualizado);
+        } else {
+            res.status(404).json({ message: 'Aeropuerto no encontrado' });
+        }
+    } catch (error) {
+        console.error('Error al editar el aeropuerto:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+
+//Para Eliminar:
+app.delete('/api/v1/aeropuertos/:AeroID', async (req, res) => {
+    const { AeroID } = req.params;
+
+    try {
+        const aeropuertoEliminado = await Aeropuerto.findOneAndDelete({ AeroID }).exec();
+
+        if (aeropuertoEliminado) {
+            res.status(200).json({ message: 'Aeropuerto eliminado correctamente' });
+        } else {
+            res.status(404).json({ message: 'Aeropuerto no encontrado' });
+        }
+    } catch (error) {
+        console.error('Error al eliminar el aeropuerto:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+
+//PARA CONTROL DE VUELOS:
+const controlVuelosSchema = new mongoose.Schema({
+    IDVuelo: String,
+    ListaDespegue: String,
+    ListaAterrizaje: String,
+    FechaDespegue: String,
+    FechaAterrizaje: String,
+    Estado: String,
+  });
+  
+  const ControlVuelo = mongoose.model('ControlVuelo', controlVuelosSchema, 'ControlVuelos');
+  
+  //PAra tabla
+  app.get('/api/v1/controldevuelos', async (req, res) => {
+    try {
+      const controlesVuelo = await ControlVuelo.find({}).exec();
+      res.status(200).json(controlesVuelo);
+    } catch (error) {
+      console.error('Error al obtener controles de vuelo:', error);
+      res.status(500).json({ error: 'Error interno del servidor' });
+    }
+  });

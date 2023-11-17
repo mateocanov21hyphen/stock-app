@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeropuertos</title>
+    <link rel="stylesheet" href="AERO.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="titulo">Aeropuertos</h1>
+    </header>
+
+    <section>
+        <a href="RDV.html">Rutas de Vuelo</a>
+        <a href="AEROLINEA.html">Aerolineas</a>
+        <a href="VUELOS.html">Vuelos</a>
+        <a href="CONTROLVUELOS.html">Control de Vuelos</a>
+        <a href="AERO.html">Aeropuertos</a>
+    </section>
+
+    <!-- Tabla con las Rutas de Vuelo que hay en la BD  -->
+    <div id="tabla">
+
+        <h2></h2>
+        <h2>Datos de Aeropuertos</h2>
+
+        <table id="Tabla">
+            <thead>
+                <tr>
+                    <th>ID Aeropuerto</th>
+                    <th>Nombre Aeropuerto</th>
+
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Aquí se insertarán los datos que hayan en la bd de mongo DB -->
+            </tbody>
+
+        </table>
+    </div>
+    
+    <div id="crear">
+
+        <h2></h2>
+        <h2>Crear un Aeropuerto</h2>
+
+        <input type="text" id="AeroID" placeholder="Id del Aeropuerto">
+
+        <input type="text" id="nombreAero" placeholder="Nombre del aeropuerto">
+
+        <button>Crear Aeropuerto</button>
+
+    </div>
+
+    <div id="buscar">
+        <h2></h2>
+        <h2>Buscar un Aeropuerto:</h2>
+        <input type="text" id="AeroID" placeholder="Id del Aeropuerto">
+        <button id="buscarButton">Buscar Aeropuerto</button>
+    </div>
+
+    <div id="Editar">
+
+        <h2>Editar un Aeropuerto</h2>
+        <input type="text" id="AeroID" placeholder="Id del Aeropuerto">
+        <input type="text" id="nombreAero" placeholder="Nombre del aeropuerto">
+        <button id="editarButton">Editar aeropuerto</button>
+
+    </div>
+    
+
+    <div id="Eliminar">
+
+    <h2>Eliminar un Aeropuerto</h2>
+    <input type="text" id="eliminarAeroID" placeholder="ID del Aeropuerto a eliminar">
+    <button id="eliminarButton">Borrar Aeropuerto</button>
+
+</div>
+</body>
+</html>

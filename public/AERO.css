@@ -6,7 +6,7 @@
 }
 
 
-#crearAeropuerto {
+#crear {
 
     display: flex;
     flex-direction: column;
@@ -64,58 +64,30 @@ section a {
 }
 
 /* Estilos generales de la tabla */
-#tablaDatos {
-
+#Tabla {
+    max-width: 100%;
     overflow-x: auto;
 }
 
-#tablaDatos table {
+#Tabla table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-
 }
 
-#tablaDatos th,
-#tablaDatos td {
+#Tabla th,
+#Tabla td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 8px;
     text-align: left;
 }
 
+/* Estilos para las columnas */
+/* Puedes ajustar el ancho de las columnas según sea necesario */
+#Tabla th {
+    width: calc(100% / 9);
+}
+
 /* Estilo alternativo para filas pares */
-#tablaDatos tbody tr:nth-child(even) {
+#Tabla tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-/* Estilos para los encabezados de la tabla */
-#tablaDatos thead {
-    background-color: grey;
-    color: #fff;
-}
-
-#tablaDatos th {
-    font-weight: bold;
-}
-
-/* Estilos para los enlaces en la sección */
-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-section a {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: gray;
-    color: #fff;
-    text-decoration: none;
-}
-
-section a:hover {
-    background-color: #333;
 }
