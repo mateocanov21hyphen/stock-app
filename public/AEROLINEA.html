@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="AEROLINEA.css">
+    <link rel="stylesheet" href="RDV.css">
+    <script src="index.js" defer></script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1 id="titulo">Aerolinea</h1>
+    </header>
+
+    <section>
+        <a href="RDV.html">Rutas de Vuelo</a>
+        <a href="AEROLINEA.html">Aerolineas</a>
+        <a href="VUELOS.html">Vuelos</a>
+        <a href="CONTROLVUELOS.html">Control de Vuelos</a>
+        <a href="AERO.html">Aeropuertos</a>
+    </section>
+
+    <div id="tablaDatos">
+
+        <h2></h2>
+        <h2>Datos de Aerolineas</h2>
+
+        <table id="datosTablaAerolineas">
+            <thead>
+                <tr>
+                    <th>ID de Aerolínea</th>
+                    <th>Nombre de Aerolínea</th>
+                    <!-- Agrega aquí más encabezados si los tienes -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se cargarán los datos -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="crear">
+
+        <h2></h2>
+        <h2>Crear una Nueva Aerolinea</h2>
+
+        <input type="text" id="AeolineaID" placeholder="Id de la Aerolinea">
+
+        <input type="text" id="nombreAerolinea" placeholder="Nombre de la Aerolinea">
+
+        <button>Crear Aerolinea</button>
+
+    </div>
+
+    <div id="buscar">
+
+        <h2></h2>
+        <h2>Buscar Aerolinea</h2>
+        <input type="text" id="AerolineaIDBuscar" placeholder="ID de la Aerolínea">
+        <button>Buscar Aerolínea</button>
+    
+        <div id="detallesAerolinea"></div> 
+    </div>
+
+    <div id="Editar">
+
+        <h2></h2>
+        <h2>Editar Aerolinea</h2>
+
+        <input type="text" id="AeolineaIDModificar" placeholder="Id Aerolinea">
+        <input type="text" id="nombreAerolineaModificar" placeholder="Nombre de la Aerolinea">
+
+        <button>Editar Aerolinea</button>
+
+    </div>
+
+    <div id="Eliminar">
+
+        <h2>Eliminar Aerolínea</h2>
+        <input type="text" id="idAerolinea" placeholder="Id Aerolínea">
+        <button onclick="eliminarAerolinea()">Eliminar Aerolinea</button>
+
+    </div>
+
+</body>
+
+
+
+</html>

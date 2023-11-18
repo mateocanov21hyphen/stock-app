@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelos</title>
+    <link rel="stylesheet" href="VUELOS.css">
+    <script src="index.js" defer></script>
+</head>
+
+
+<body>
+
+    <header>
+        <h1 id="titulo">Vuelos</h1>
+    </header>
+    
+    <section>
+        <a href="RDV.html">Rutas de Vuelo</a>
+        <a href="AEROLINEA.html">Aerolineas</a>
+        <a href="VUELOS.html">Vuelos</a>
+        <a href="CONTROLVUELOS.html">Control de Vuelos</a>
+        <a href="AERO.html">Aeropuertos</a>
+    </section>
+
+    <!-- Tabla con Los vuelos -->
+    <div id="tablaDatos">
+
+        <h2></h2>
+        <h2>Datos de Rutas de Vuelo</h2>
+
+        <table id="datosTablaVuelos">
+            <thead>
+                <tr>
+                    <th>ID Vuelo</th>
+                    <th>ID Ruta de Vuelo</th>
+                    <th>ID Aerolinea</th>
+                    <th>Fecha Salida</th>
+                    <th>Hora Salida</th>
+                    <th>Fecha llegada</th>
+                    <th>Hora llegada</th>
+                    <th>Estado del Vuelo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Aquí se insertarán los datos que hayan en la bd de mongo DB -->
+            </tbody>
+
+        </table>
+    </div>   
+
+    <!-- Cuando se vaya a crear un Nuevo vuelo, solo se puede crear si el ID de la ruta de vuelo y el id de la aerolinea existen en la bd -->
+    <div id="crear">
+
+        <h2></h2>
+        <h2>Crear un nuevo vuelo:</h2>
+        <input type="text" id="IDVuelo" placeholder="ID Vuelo">
+
+        <input type="text" id="IDRutaVuelo" placeholder="ID Ruta de Vuelo">
+
+        <input type="text" id="IDAerolinea" placeholder="ID Aerolinea">
+
+        <input type="text" id="FechaSalida" placeholder="Fecha Salida">
+
+        <input type="text" id="HoraSalida" placeholder="Hora Salida">
+
+        <input type="text" id="Fechallegada" placeholder="Fecha llegada">
+
+        <input type="text" id="Horallegada" placeholder="Hora llegada">
+
+        <input type="text" id="Estado" placeholder="Estado">
+
+        <button>Crear un nuevo Vuelo</button>
+        
+    </div>
+
+    <div id="buscar">
+        <h2></h2>
+        <h2>Buscar Vuelo:</h2> <!-- Agregado -->
+        <input type="text" id="IdVueloBuscar" placeholder="Id del vuelo">
+        <button>Buscar Vuelo</button>
+    </div>
+
+    <div id="Editar">
+        <h2></h2>
+        <h2>Editar un Vuelo:</h2>
+
+        <input type="text" id="IDVueloModificar" placeholder="ID Vuelo">
+
+        <input type="text" id="IDRutaVueloModificar" placeholder="ID Ruta de Vuelo">
+
+        <input type="text" id="IDAerolineaModificar" placeholder="ID Aerolinea">
+
+        <input type="text" id="FechaSalidaModificar" placeholder="Fecha Salida">
+
+        <input type="text" id="HoraSalidaModificar" placeholder="Hora Salida">
+
+        <input type="text" id="FechallegadaModificar" placeholder="Fecha llegada">
+
+        <input type="text" id="HorallegadaModificar" placeholder="Hora llegada">
+
+        <input type="text" id="EstadoModificar" placeholder="Estado">
+
+        <button onclick="modificarVuelo()">Modificar Ruta de vuelo</button>
+    </div>
+
+
+    <div id="Eliminar">
+
+        <h2></h2>
+        <h2>Eliminar una ruta de Vuelo</h2>
+
+        <input type="text" id="IDVueloEliminar" placeholder="ID del Vuelo">
+
+        <button onclick="eliminarRutaVuelo()">Borrar Vuelo</button>
+
+
+    </div>
+
+    
+</body>
+
+
+</html>
